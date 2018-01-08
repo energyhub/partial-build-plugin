@@ -3,24 +3,23 @@
  */
 package com.lesfurets.maven.partial.core;
 
-import static com.lesfurets.maven.partial.utils.DependencyUtils.getAllDependencies;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import org.apache.maven.execution.MavenSession;
+import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.logging.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.apache.maven.execution.MavenSession;
-import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.logging.Logger;
-
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
+import static com.lesfurets.maven.partial.utils.DependencyUtils.getAllDependencies;
 
 @Singleton
 public class RebuildProjects {
 
-    private static final String MAVEN_TEST_SKIP = "maven.test.skip";
+    private static final String MAVEN_TEST_SKIP = "skipTests";
     private static final String SONAR_SKIP = "sonar.skip";
 
     @Inject
